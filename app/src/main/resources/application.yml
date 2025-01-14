@@ -1,3 +1,35 @@
+#Nesta ponto do projeto é usado dados locais
+#Futuramente irei configurar vai variaveis de ambiente 
+
+var:
+  ip:
+    redis: 10.0.0.127
+  
+  port: 
+    redis: 6379
+
+  password:
+    redis: 123456
+
+server:
+  error:
+    include-stacktrace : never
+
+
 spring:
   application:
     name: "app"
+  datasource:
+      url: jdbc:mysql://10.0.0.127:3306/GasDataBase?allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+
+  jpa:
+      hibernate:
+          ddl-auto: update
+
+      # isso é para mostrar o sql gerado no console
+      show-sql: true
+
+      defer-datasource-initialization: true
+    
