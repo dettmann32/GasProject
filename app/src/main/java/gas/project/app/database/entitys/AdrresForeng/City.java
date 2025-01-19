@@ -9,13 +9,15 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Data
+@Getter
 @Table(name = "tb_city")
 public class City {
 
@@ -24,8 +26,8 @@ public class City {
     @Column(name = "city_id")
     private Long id;
 
-    @Column(name = "city", nullable = false, unique = true, length = 100)
-    private String city;
+    @Column(name = "city", nullable = false, unique = true, length = 255)
+    private String City;
 
     
 

@@ -12,11 +12,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_prices")
 public class Prices {
@@ -42,6 +46,10 @@ public class Prices {
 
     @Column(name = "gas_type")
     private GasType gasType;
+
+    @ManyToOne
+    @JoinColumn(name = "adress_id")
+    private Adress adress;
 
     public enum GasType {
         DIESEL,

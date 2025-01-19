@@ -10,6 +10,18 @@ var:
 
   password:
     redis: 123456
+    
+    
+userAdminPassword: "123456"
+
+
+jwt:
+  private:
+    key: classpath:private.key
+  
+  public:
+    key: classpath:public.key
+
 
 server:
   error:
@@ -28,8 +40,15 @@ spring:
       hibernate:
           ddl-auto: update
 
-      # isso é para mostrar o sql gerado no console
       show-sql: true
 
       defer-datasource-initialization: true
+
+      init:
+        mode: always
     
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

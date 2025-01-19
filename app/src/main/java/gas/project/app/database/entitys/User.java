@@ -14,11 +14,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder 
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_users")
 public class User {
@@ -28,14 +32,14 @@ public class User {
     @Column(name = "user_id")
     private UUID id;
 
-    @Column(name = "user_name")
-    private String name;
+    @Column(name = "user_name", unique = true)
+    private String username;
 
     @Column(name = "password")
     private String password;
 
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(/*cascade = CascadeType.ALL,*/ fetch = FetchType.EAGER)
     @JoinTable(
             name = "tb_users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
